@@ -936,6 +936,9 @@ public class Task implements Runnable, TaskSlotPayload, TaskActions, PartitionPr
 	}
 
 	private void notifyFatalError(String message, Throwable cause) {
+		if (cause==null) {
+			cause=new Throwable("NULL EEOR");
+		}
 		taskManagerActions.notifyFatalError(message, cause);
 	}
 

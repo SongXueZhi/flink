@@ -1816,6 +1816,9 @@ public class TaskExecutor extends RpcEndpoint implements TaskExecutorGateway {
 			try {
 				log.error(message, cause);
 			} catch (Throwable ignored) {}
+			if (cause==null) {
+			cause=new Throwable("NULL EEOR");
+			}
 
 			// The fatal error handler implementation should make sure that this call is non-blocking
 			fatalErrorHandler.onFatalError(cause);
